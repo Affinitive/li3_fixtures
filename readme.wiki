@@ -45,7 +45,7 @@ for the `lithium\util\Collection` class.
 	// let's assume $request exists and is a Request object
 	// the url is "/posts"
 	$file = 'requests/' . Inflector::slug(trim($request->url, '/'));
-	Fixtures::save($request, $file, array('type' => 'php'));
+	Fixtures::save($file, $request, array('adapter' => 'Php'));
 
 Using the php source, you can take a real `Request` object, save it to a fixture
 and then use it later in your tests.  This reduces the potential for human
@@ -54,7 +54,7 @@ error when creating mock classes in tests.
 ### Loading Custom Objects
 
     // loads app/tests/fixtures/requests/posts.php
-    $request = Fixture::load('requests/posts', array('type' => 'php'));
+    $request = Fixture::load('requests/posts', array('adapter' => 'Php'));
 
 The save example above writes an exported version of the `Request` object
 to the fixture file.  The load example here loads the `Request` object.
